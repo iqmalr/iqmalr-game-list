@@ -28,7 +28,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {/* <div className="flex"> */}
+        {/* <Sidebar /> */}
+        <main className="flex-1 p-4">{children}</main>
+        {/* </div> */}
       </body>
     </html>
   );
