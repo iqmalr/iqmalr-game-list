@@ -1,6 +1,5 @@
 "use client";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-// import GameList from "@/data/game.json";
 import { fetchGames } from "@/data/fetch";
 import EachUtils from "@/utils/EachUtils";
 import { useEffect, useState } from "react";
