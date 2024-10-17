@@ -13,7 +13,7 @@ const HigestRatedGames = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    let isMounted = true;
+    const isMounted = true;
     const getGames = async () => {
       try {
         setLoading(true);
@@ -36,10 +36,7 @@ const HigestRatedGames = () => {
       }
     };
     getGames();
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+  }, [higestRatedGames]);
   if (error) {
     return (
       <Alert variant="destructive">

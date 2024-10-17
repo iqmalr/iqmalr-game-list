@@ -12,7 +12,7 @@ const TrendingGames = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    let isMounted = true;
+    const isMounted = true;
     const getGames = async () => {
       try {
         const gameData = await fetchGames(30);
@@ -45,7 +45,7 @@ const TrendingGames = () => {
     };
 
     getGames();
-  }, []);
+  }, [trendingGameList]);
   if (error) {
     return (
       <Alert variant="destructive">

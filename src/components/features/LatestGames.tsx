@@ -12,7 +12,7 @@ const LatestGames = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    let isMounted = true;
+    const isMounted = true;
 
     const getGames = async () => {
       try {
@@ -42,7 +42,7 @@ const LatestGames = () => {
       }
     };
     getGames();
-  }, []);
+  }, [latestGameList]);
   if (error) {
     return (
       <Alert variant="destructive">

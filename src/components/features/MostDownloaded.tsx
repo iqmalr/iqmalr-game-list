@@ -13,7 +13,7 @@ const MostDownloaded = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let isMounted = true;
+    const isMounted = true;
 
     const getGames = async () => {
       try {
@@ -37,11 +37,7 @@ const MostDownloaded = () => {
     };
 
     getGames();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+  }, [mostDownloadedGameList]);
 
   if (error) {
     return (

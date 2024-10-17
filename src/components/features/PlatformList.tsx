@@ -13,7 +13,7 @@ const PlatformList = (props: Props) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
-    let isMounted = true;
+    const isMounted = true;
     const getPlatform = async () => {
       try {
         setLoading(true);
@@ -36,10 +36,7 @@ const PlatformList = (props: Props) => {
       }
     };
     getPlatform();
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+  }, [platform]);
   if (error) {
     return (
       <Alert variant="destructive">
