@@ -1,3 +1,5 @@
+import { SideBar } from "@/components/fragments/SideBar";
+import { ReduxProvider } from "@/providers/reduxProvider";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -28,9 +30,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* <div className="flex"> */}
-        {/* <Sidebar /> */}
-        <main className="flex-1 p-4">{children}</main>
+        <ReduxProvider>
+          {/* <div className="flex"> */}
+          {/* <Sidebar /> */}
+          <main>
+            <SideBar>{children}</SideBar>
+          </main>
+        </ReduxProvider>
+        {/* <main className="">{children}</main> */}
         {/* </div> */}
       </body>
     </html>

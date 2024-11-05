@@ -1,7 +1,9 @@
 "use client";
-import { fetchPlatform } from "@/data/fetch";
+
+import { useAppDispatch, useAppSelector } from "@/hooks/storeHooks";
+import { getLocalPlatforms } from "@/local/store/slices/localPlatformSlice";
 import EachUtils from "@/utils/EachUtils";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import PlatformCard from "../fragments/PlatformCard";
 import { SkeletonCard } from "../fragments/SkeletonCard";
 import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
@@ -9,35 +11,25 @@ import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 type Props = {};
 
 const PlatformList = (props: Props) => {
-  const [platform, setPlatform] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const dispatch = useAppDispatch();
+
+  const { platforms, loading, error } = useAppSelector((state) => {
+    // console.log("Current State:", state);
+    return state.localPlatform;
+  });
+
   useEffect(() => {
-    const isMounted = true;
-    const getPlatform = async () => {
-      try {
-        setLoading(true);
-        const platformData = await fetchPlatform();
-        if (isMounted) {
-          setPlatform(
-            platformData.sort(
-              (a: { games_count: number }, b: { games_count: number }) =>
-                b.games_count - a.games_count
-            )
-          );
-          setLoading(false);
-        }
-        console.log("platform :", platform);
-      } catch (error) {
-        console.error("Failed to load platform:", error);
-        if (isMounted) {
-          setError("Failed to load platform. Please try again later.");
-        }
-      }
-    };
-    getPlatform();
-  }, [platform]);
+    dispatch(getLocalPlatforms());
+  }, [dispatch]);
+
+  // useEffect(() => {
+  //   console.log("Platforms updated:", platforms);
+  //   console.log("Loading state:", loading);
+  //   console.log("Error state:", error);
+  // }, [platforms, loading, error]);
+
   if (error) {
+    console.log(error);
     return (
       <Alert variant="destructive">
         <AlertTitle>No Data Available</AlertTitle>
@@ -45,21 +37,20 @@ const PlatformList = (props: Props) => {
       </Alert>
     );
   }
-  // const sortedPlatform = platformData.sort(
-  //   (a, b) => b.games_count - a.games_count
-  // );
 
   return (
     <div>
       <h1 className="text-2xl font-bold mb-4">List of Platforms</h1>
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {loading ? (
           Array.from({ length: 20 }).map((_, index) => (
-            <SkeletonCard key={index} className="h-[100px] w-auto rounded-xl" />
+            <div key={index} className="shrink-0">
+              <SkeletonCard className="h-[100px] w-full rounded-xl" />
+            </div>
           ))
         ) : (
           <EachUtils
-            of={platform}
+            of={platforms}
             render={(platform) => (
               <PlatformCard
                 key={platform.id}
@@ -75,3 +66,35 @@ const PlatformList = (props: Props) => {
 };
 
 export default PlatformList;
+
+// const [platform, setPlatform] = useState([]);
+// const [loading, setLoading] = useState(true);
+// const [error, setError] = useState<string | null>(null);
+// useEffect(() => {
+//   const isMounted = true;
+//   const getPlatform = async () => {
+//     try {
+//       setLoading(true);
+//       const platformData = await fetchPlatform();
+//       if (isMounted) {
+//         setPlatform(
+//           platformData.sort(
+//             (a: { games_count: number }, b: { games_count: number }) =>
+//               b.games_count - a.games_count
+//           )
+//         );
+//         setLoading(false);
+//       }
+//       console.log("platform :", platform);
+//     } catch (error) {
+//       console.error("Failed to load platform:", error);
+//       if (isMounted) {
+//         setError("Failed to load platform. Please try again later.");
+//       }
+//     }
+//   };
+//   getPlatform();
+// }, []);
+// const sortedPlatform = platformData.sort(
+//   (a, b) => b.games_count - a.games_count
+// );
