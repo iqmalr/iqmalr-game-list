@@ -1,14 +1,14 @@
 const Hero = () => {
   return (
-    <section className="hero-section bg-gray-900 text-white p-8">
+    <section>
       <div className="container mx-auto">
         <h1 className="text-4xl font-bold mb-4">
           Selamat datang di Portofolio Game Saya!
         </h1>
         <p className="text-lg mb-6">
           Dibangun menggunakan <strong>Next.js</strong>,
-          <strong>ShadcnUI</strong>, <strong>Redux</strong>, dan
-          <strong>TypeScript</strong>, proyek ini adalah karya saya dalam
+          <strong> ShadcnUI</strong>, <strong>Redux</strong>, dan
+          <strong>TypeScript</strong>. Proyek ini adalah karya saya dalam
           menerapkan praktik terbaik dalam pengembangan React. Data game diambil
           dari
           <a
@@ -20,8 +20,8 @@ const Hero = () => {
             RAWG Video Games Database
           </a>
           melalui Rapid API. Selama proses development, saya menggunakan
-          <code>data.json</code> untuk mengurangi jumlah request, dan nantinya
-          akan kembali terhubung langsung dengan API.
+          data.json untuk mengurangi jumlah request, dan nantinya akan kembali
+          terhubung langsung dengan API.
         </p>
         <p className="text-lg mb-6">
           Proyek ini juga mengimplementasikan berbagai konsep React modern,

@@ -1,10 +1,5 @@
 "use client";
-import {
-  IconBrandTabler,
-  IconHome,
-  IconSettings,
-  IconUserBolt,
-} from "@tabler/icons-react";
+import { IconBrandTabler, IconHome } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -32,26 +27,27 @@ export function SideBar({ children }: { children: React.ReactNode }) {
       ),
     },
     {
-      label: "Dashboard",
-      href: "/dashboard",
+      label: "Platforms",
+      href: "/platforms",
       icon: (
         <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
-    {
-      label: "Profile",
-      href: "/profile",
-      icon: (
-        <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-      ),
-    },
-    {
-      label: "Settings",
-      href: "/settings",
-      icon: (
-        <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-      ),
-    },
+    // ,
+    // {
+    //   label: "Profile",
+    //   href: "/profile",
+    //   icon: (
+    //     <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+    //   ),
+    // },
+    // {
+    //   label: "Settings",
+    //   href: "/settings",
+    //   icon: (
+    //     <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+    //   ),
+    // },
   ];
 
   const [open, setOpen] = useState(false);
