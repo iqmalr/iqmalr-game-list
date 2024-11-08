@@ -10,7 +10,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 // import ThemeToggle from "./theme-toggle";
-import { Sidebar, SidebarBody, SidebarLink } from "@/components/ui/sidebar";
+import {
+  Sidebar,
+  SidebarBody,
+  SidebarLink,
+} from "@/features/components/ui/sidebar";
 
 interface LinkItem {
   label: string;

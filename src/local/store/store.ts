@@ -1,3 +1,5 @@
+import localHigestRatedGamesReducer from "@/local/store/slices/localHigestRatedGamesSlice";
+import localLatestGamesReducer from "@/local/store/slices/localLatestGamesSlice";
 import localMostDownloadedGamesReducer from "@/local/store/slices/localMostDownloadedGamesSlice";
 import localPlatformReducer from "@/local/store/slices/localPlatformSlice";
 import localTrendingGamesReducer from "@/local/store/slices/localTrendingGamesSlice";
@@ -8,6 +10,8 @@ export const store = configureStore({
     localPlatform: localPlatformReducer,
     localMostDownloadedGames: localMostDownloadedGamesReducer,
     localTrendingGames: localTrendingGamesReducer,
+    localLatestGames: localLatestGamesReducer,
+    localHigestRatedGames: localHigestRatedGamesReducer,
   },
 });
 

@@ -1,4 +1,4 @@
-import { SideBar } from "@/components/fragments/SideBar";
+import { SideBar } from "@/features/components/fragments/SideBar";
 import { ReduxProvider } from "@/providers/reduxProvider";
 import type { Metadata } from "next";
 import localFont from "next/font/local";

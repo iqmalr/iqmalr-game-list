@@ -16,7 +16,7 @@ export interface Game {
   playtime: number;
   suggestions_count: number;
   updated: string;
-  user_game: unknown; // Replace with specific type if available
+  user_game: unknown;
   reviews_count: number;
   saturated_color: string;
   dominant_color: string;
@@ -24,7 +24,7 @@ export interface Game {
   parent_platforms: ParentPlatform[];
   genres: Genre[];
   stores: Store[];
-  clip?: unknown; // Replace with specific type if available
+  clip?: unknown;
   tags: Tag[];
 }
 
@@ -48,7 +48,7 @@ export interface PlatformDetails {
   platform: Platform;
   released_at: string;
   requirements_en?: Requirements;
-  requirements_ru?: unknown; // Replace with specific type if available
+  requirements_ru?: unknown;
 }
 
 export interface Platform {

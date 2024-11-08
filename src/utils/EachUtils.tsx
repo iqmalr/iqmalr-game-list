@@ -1,25 +1,23 @@
 import { Children, ReactNode } from "react";
 
-const EachUtils = ({
+function EachUtils<D>({
   render,
   of,
 }: {
-  render: (item: any, index: number) => ReactNode;
-  of: any[];
-}) => {
+  render: (item: D, index: number) => ReactNode;
+  of: D[];
+}) {
   return (
     <>
       {Children.toArray(
         of.map((item, index) => {
-          // Log setiap item dan index
           //   console.log("Item:", item, "Index:", index);
 
-          // Render item seperti biasa
           return render(item, index);
         })
       )}
     </>
   );
-};
+}
 
 export default EachUtils;

@@ -1,4 +1,4 @@
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "@/features/components/ui/skeleton";
 import { twMerge } from "tailwind-merge";
 
 interface SkeletonCardProps {

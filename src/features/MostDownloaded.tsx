@@ -1,22 +1,19 @@
 "use client";
-import { useAppDispatch, useAppSelector } from "@/hooks/storeHooks";
-import { getLocalMostDownloadedGames } from "@/local/store/slices/localMostDownloadedGamesSlice";
+import { SkeletonCard } from "@/features/components/fragments/SkeletonCard";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/features/components/ui/alert";
+import { ScrollArea, ScrollBar } from "@/features/components/ui/scroll-area";
+import useGetLocalMostDownloadedGames from "@/hooks/useGetLocalMostDownloadedGames";
 import EachUtils from "@/utils/EachUtils";
-import { lazy, useEffect } from "react";
-import { SkeletonCard } from "../fragments/SkeletonCard";
-import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
-import { ScrollArea, ScrollBar } from "../ui/scroll-area";
-const GameCard = lazy(() => import("../fragments/GameCard"));
+import { lazy } from "react";
+const GameCard = lazy(() => import("@/features/components/fragments/GameCard"));
 
 const MostDownloaded = () => {
-  const dispatch = useAppDispatch();
-  const { mostDownloadedGames, loading, error } = useAppSelector(
-    (state) => state.localMostDownloadedGames // Pastikan ini sesuai dengan state Anda
-  );
-
-  useEffect(() => {
-    dispatch(getLocalMostDownloadedGames());
-  }, [dispatch]);
+  const { mostDownloadedGames, loading, error } =
+    useGetLocalMostDownloadedGames();
 
   if (error) {
     return (
@@ -40,7 +37,7 @@ const MostDownloaded = () => {
             ))
           ) : (
             <EachUtils
-              of={mostDownloadedGames} // Ambil data yang benar dari state
+              of={mostDownloadedGames}
               render={(item) => (
                 <div className="shrink-0">
                   <GameCard

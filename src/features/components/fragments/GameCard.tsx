@@ -20,7 +20,6 @@ const GameCard = ({
       <div className="relative w-[339px] h-[179px]">
         <Image src={image} alt={name} fill loading="lazy" />
       </div>
-
       <h2 className="text-lg font-semibold  truncate">{name}</h2>
       <p className="text-sm">Rating: {rating}</p>
       <p className="text-sm">Released: {released}</p>

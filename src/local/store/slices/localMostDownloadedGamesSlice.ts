@@ -20,8 +20,6 @@ export const getLocalMostDownloadedGames = createAsyncThunk(
   async () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log("localMostDownloadedGamesData", localMostDownloadedGamesData);
-    console.log("Platform Data Type:", typeof localMostDownloadedGamesData);
-    console.log("Is Array?", Array.isArray(localMostDownloadedGamesData));
     const sortedLocalMostDownloadedGames = [
       ...localMostDownloadedGamesData,
     ].sort((a, b) => b.added - a.added);
@@ -46,6 +44,8 @@ const localMostDownloadedGameSlice = createSlice({
       })
       .addCase(getLocalMostDownloadedGames.fulfilled, (state, action) => {
         state.loading = false;
+        console.log("1 Loading getLocalMostDownloadedGames state stop");
+
         state.mostDownloadedGames = action.payload as Game[];
         state.error = null;
         console.log("2 Data loaded successfully:", state.mostDownloadedGames);

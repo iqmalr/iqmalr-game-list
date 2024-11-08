@@ -1,26 +1,27 @@
 "use client";
 
-import { useAppDispatch, useAppSelector } from "@/hooks/storeHooks";
-import { getLocalPlatforms } from "@/local/store/slices/localPlatformSlice";
+import PlatformCard from "@/features/components/fragments/PlatformCard";
+import { SkeletonCard } from "@/features/components/fragments/SkeletonCard";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/features/components/ui/alert";
+import useGetLocalPlatforms from "@/hooks/useGetLocalPlatforms";
 import EachUtils from "@/utils/EachUtils";
-import { useEffect } from "react";
-import PlatformCard from "../fragments/PlatformCard";
-import { SkeletonCard } from "../fragments/SkeletonCard";
-import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 
-type Props = {};
+const PlatformList = () => {
+  const { platforms, loading, error } = useGetLocalPlatforms();
+  // const dispatch = useAppDispatch();
 
-const PlatformList = (props: Props) => {
-  const dispatch = useAppDispatch();
+  // const { platforms, loading, error } = useAppSelector((state) => {
+  // console.log("Current State:", state);
+  //   return state.localPlatform;
+  // });
 
-  const { platforms, loading, error } = useAppSelector((state) => {
-    // console.log("Current State:", state);
-    return state.localPlatform;
-  });
-
-  useEffect(() => {
-    dispatch(getLocalPlatforms());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getLocalPlatforms());
+  // }, []);
 
   // useEffect(() => {
   //   console.log("Platforms updated:", platforms);
